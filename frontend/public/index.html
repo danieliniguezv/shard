@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./dist/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Bridge</title>
+</head>
+<body>
+    <div id="overlay">
+        <div class="process">
+            <h1 id="processing">Processing. Please DO NOT REFRESH!</h1>
+        </div>
+        <div id="progress"></div>
+        <div class="successsful">
+            <h2 id="depositSuccessful"></h2>
+        </div>
+        <div class="bridged">
+            <h2 id="tokensBridged"></h2>
+        </div>
+    </div>
+    <div class="connect">
+        <div class="walletButton">
+            <button id="connectWallet">Connect Wallet</button>
+        </div>
+        <h4 id="userAddress"></h4>
+    </div>
+    <div class="mainTitle">
+        <h1>Splendor Bridge</h1>
+    </div>
+    <div class="fromTo">
+        <div class="bridgeFrom">
+            <h3>Bridge from</h3>
+            <select id="selectNetworkFrom">
+                <option value="">Choose a Network</option>
+                <option value="arbitrum">Arbitrum</option>
+                <option value="avax">AVAX</option>
+                <option value="bnb">BNB</option>
+                <option value="ethereum">Ethereum</option>
+                <option value="optimism">Optimism</option>
+                <option value="polygon">Polygon</option>
+                <option value="splendor">Splendor</option>
+            </select>
+        </div>
+        <div class="bridgeTo">
+            <h3>Bridge To</h3>
+            <select id="selectNetworkTo">
+                <option value="">Choose a Network</option>
+                <option value="arbitrum" hidden>Arbitrum</option>
+                <option value="avax" hidden>AVAX</option>
+                <option value="bnb" hidden>BNB</option>
+                <option value="ethereum" hidden>Ethereum</option>
+                <option value="optimism" hidden>Optimism</option>
+                <option value="polygon" hidden>Polygon</option>
+                <option value="splendor" hidden>Splendor</option>
+            </select>
+        </div>
+    </div>
+    <div class="selectToken">
+        <select id="tokenDropdown">
+            <option value="">Choose a Token</option>
+            <option value="1inch" hidden>1INCH</option>
+            <option value="aave" hidden>AAVE</option>
+            <option value="arb" hidden>ARB</option>
+            <option value="avax" hidden>AVAX</option>
+            <option value="bnb" hidden>BNB</option>
+            <option value="busd" hidden>BUSD</option>
+            <option value="dai" hidden>DAI</option>
+            <option value="eth" hidden>ETH</option>
+            <option value="eurc" hidden>EURc</option>
+            <option value="eurt" hidden>EURt</option>
+            <option value="lido" hidden>LDO</option>
+            <option value="link" hidden>LINK</option>
+            <option value="matic" hidden>MATIC</option>
+            <option value="op" hidden>OP</option>
+            <option value="pancake" hidden>CAKE</option>
+            <option value="uni" hidden>UNI</option>
+            <option value="usdc" hidden>USDC</option>
+            <option value="usdcpolygon" hidden>USDCpolygon</option>
+            <option value="usdt" hidden>USDT</option>
+            <option value="usdtpolygon" hidden>USDTpolygon</option>
+            <option value="wavax" hidden>WAVAX</option>
+            <option value="wbnb" hidden>WBNB</option>
+            <option value="weth" hidden>WETH</option>
+            <option value="wmatic" hidden>WMATIC</option>
+            <option value="xaut" hidden>XAUt</option>
+        </select>
+    </div>
+    <div class="inputs">
+        <div class="arrow">
+            <h3><span id="from"></span>➡<span id="to"></span></h3>
+        </div>
+        <div class="inputAmount">
+            <form id="amount">
+                <h3>Amount</h3>
+                <input type="text" id="depositAmount">
+            </form>
+        </div>
+        <div class="bridgeButton">
+            <button id="bridgeAsset">Bridge Asset</button>
+        </div>
+    </div>
+</body>
+</html>
