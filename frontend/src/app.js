@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { bridgeNative, bridgeERC20, erc20Token, erc20TokenBurnable } from './abi.js';
+import { bridgeNative, bridgeERC20, erc20Token, erc20TokenBurnable } from './src/contracts/bridge-contracts.js';
 
 let provider = null;
 let signer = null;
