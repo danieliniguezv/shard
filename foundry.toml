@@ -1,6 +1,19 @@
 [profile.default]
-src = "src"
+solc="0.8.25"
+src = "backend"
+test = "backend/test"
 out = "out"
 libs = ["lib"]
 
-# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+[profile.script]
+src="backend"
+
+[rpc_endpoints]
+mainnet = "${MAINNET_RPC_URL}"
+arbitrum_sepolia = "${ARBITRUM_SEPOLIA_RPC_URL}"
+avax_fuji = "${AVAX_FUJI_RPC_URL}"
+bnb_testnet = "${BNB_TESTNET_RPC_URL}"
+holesky = "${HOLESKY_RPC_URL}"
+optimism_sepolia = "{OPTIMISM_SEPOLIA_RPC_URL}"
+amoy = "{AMOY_RPC_URL}"
+sepolia = "${SEPOLIA_RPC_URL}"
