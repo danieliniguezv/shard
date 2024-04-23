@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: BSD-Clause-3
 
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.25;
 
 import {ERC20} from '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import {ERC20Burnable} from '@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol';
@@ -18,6 +18,7 @@ contract ERC20TokenBurnable is ERC20, ERC20Burnable, Ownable {
   error NoTokensDeposited();
 
   constructor(string memory _tokenName, string memory _tokenSymbol, uint8 _setDecimals)
+  Ownable(msg.sender)
   ERC20(_tokenName, _tokenSymbol) {
     locked = true;
     _decimals = _setDecimals;

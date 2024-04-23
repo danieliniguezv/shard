@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: BSD-Clause-3
 
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.25;
 
 import {IERC20} from '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import {Ownable} from '@openzeppelin/contracts/access/Ownable.sol';
@@ -19,7 +19,8 @@ contract BridgeERC20 is Ownable {
 
   mapping(address => mapping(address => uint256)) public deposited;
 
-  constructor(string memory _network) {
+  constructor(string memory _network)
+  Ownable(msg.sender) {
     locked = true;
     network = keccak256(bytes(_network));
   }

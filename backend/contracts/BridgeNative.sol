@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: BSD-Clause-3
 
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.25;
 
 import {Ownable} from '@openzeppelin/contracts/access/Ownable.sol';
 
@@ -19,7 +19,7 @@ contract BridgeNative is Ownable {
   error InsufficientBalance();
   error UnableToUnlock();
 
-  constructor(string memory _network) {
+  constructor(string memory _network) Ownable(msg.sender) {
     locked = true;
     network = keccak256(bytes(_network));
   }
