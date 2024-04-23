@@ -34,9 +34,9 @@ function createCircularProgress() {
 }
 
 const arbitrumNetwork = {
-    chainId: '0x66eed',
-    chainName: 'Arbitrum Goerli Testnet',
-    rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'],
+    chainId: '0x66eee',
+    chainName: 'Arbitrum Sepolia Testnet',
+    rpcUrls: ['https://sepolia-rollup.arbitrum.io/rpc'],
     nativeCurrency: {
         name: 'Ether',
         symbol: 'ETH',
@@ -58,7 +58,7 @@ const avaxNetwork = {
 const bnbNetwork = {
     chainId: '0x61',
     chainName: 'BNB Smart Chain Testnet',
-    rpcUrls: ['https://bsc-testnet.publicnode.com'],
+    rpcUrls: ['https://bsc-testnet-dataseed.bnbchain.org'],
     nativeCurrency: {
         name: 'BNB',
         symbol: 'tBNB',
@@ -67,9 +67,9 @@ const bnbNetwork = {
 }
 
 const ethereumNetwork = {
-    chainId: '0x5',
-    chainName: 'Goerli',
-    rpcUrls: ['https://rpc.ankr.com/eth_goerli'],
+    chainId: '0x4268',
+    chainName: 'Holesky Test Network',
+    rpcUrls: ['https://ethereum-holesky.publicnode.com/'],
     nativeCurrency: {
         name: 'Ether',
         symbol: 'ETH',
@@ -78,9 +78,9 @@ const ethereumNetwork = {
 }
 
 const optimismNetwork = {
-    chainId: '0x1a4',
-    chainName: 'Optimism Goerli',
-    rpcUrls: ['https://goerli.optimism.io'],
+    chainId: '0xaa37dc',
+    chainName: 'OP Sepolia',
+    rpcUrls: ['https://sepolia.optimism.io'],
     nativeCurrency: {
         name: 'Ether',
         symbol: 'ETH',
@@ -89,9 +89,9 @@ const optimismNetwork = {
 }
 
 const polygonNetwork =  {
-    chainId: '0x13881',
-    chainName: 'Mumbai',
-    rpcUrls: ['https://rpc-mumbai.maticvigil.com'],
+    chainId: '0x13882',
+    chainName: 'Amoy',
+    rpcUrls: ['https://rpc-amoy.polygon.technology/'],
     nativeCurrency: {
         name: 'MATIC',
         symbol: 'MATIC',
