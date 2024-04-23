@@ -163,7 +163,7 @@ const connect = async () => {
 
 const supportedChains = async (chainId) => {
     try {
-        if (chainId == '0x66eed' || chainId == '0xa869' || chainId == '0x61' || chainId == '0x5' || chainId == '0x1a4' || chainId == '0x13881' || chainId == '0xaa36a7') {
+        if (chainId == '0x66eee' || chainId == '0xa869' || chainId == '0x61' || chainId == '0x4268' || chainId == '0xaa37dc' || chainId == '0x13882' || chainId == '0xaa36a7') {
 
         } else {
             throw new Error(`Unsupported network! Please select a supported network:\n-Shardeum\n-Arbitrum\n-Avalanche\n-Binance Smart Chain\n-Ethereum\n-Optimism\n-Polygon`);
@@ -616,7 +616,7 @@ const switchNetwork = async (networkChainName) => {
                 method: 'wallet_switchEthereumChain',
                 params: [
                     {
-                        'chainId': '0x5'
+                        'chainId': '0x4268'
                     }
                 ]
             });
@@ -843,30 +843,44 @@ networkDropdownTo.addEventListener('change', async () => {
         if (networkDropdownTo.value == 'ethereum') {
             const tokenOptions = tokenDropdown.options;
             tokenOptions[1].hidden = false;
+            tokenOptions[1].textContent = 's1INCH';
             tokenOptions[2].hidden = false;
+            tokenOptions[2].textContent = 'sAAVE';
             tokenOptions[3].hidden = true;
             tokenOptions[4].hidden = true;
             tokenOptions[5].hidden = true;
             tokenOptions[6].hidden = true;
             tokenOptions[7].hidden = false;
+            tokenOptions[7].textContent = 'sDAI';
             tokenOptions[8].hidden = false;
+            tokenOptions[8].textContent = 'sETH';
             tokenOptions[9].hidden = false;
+            tokenOptions[9].textContent = 'sEURC';
             tokenOptions[10].hidden = false;
+            tokenOptions[10].textContent = 'sEURT';
             tokenOptions[11].hidden = false;
+            tokenOptions[11].textContent = 'sLDO';
             tokenOptions[12].hidden = false;
+            tokenOptions[12].textContent = 'sLINK';
             tokenOptions[13].hidden = true;
             tokenOptions[14].hidden = true;
             tokenOptions[15].hidden = false;
+            tokenOptions[15].textContent = 'sCAKE';
             tokenOptions[16].hidden = false;
+            tokenOptions[16].textContent = 'sUNI';
             tokenOptions[17].hidden = false;
+            tokenOptions[17].textContent = 'sUSDC';
             tokenOptions[18].hidden = true;
             tokenOptions[19].hidden = false;
+            tokenOptions[19].textContent = 'sUSDT';
             tokenOptions[20].hidden = true;
             tokenOptions[21].hidden = true;
             tokenOptions[22].hidden = true;
             tokenOptions[23].hidden = false;
-            tokenOptions[24].hidden = true;  
+            tokenOptions[23].textContent = 'sWETH';
+            tokenOptions[24].hidden = true;    
             tokenOptions[25].hidden = false;  
+            tokenOptions[25].textContent = 'sXAUT';  
         }
         if (networkDropdownTo.value == 'optimism') {
             const tokenOptions = tokenDropdown.options;
@@ -975,7 +989,7 @@ bridgeButton.addEventListener('click', async () => {
                     
                     const txLockFunds = await bridgeNativeContractArbitrum.lockFunds({value: parsedAmount});
                     await txLockFunds.wait();
-                    depositSuccessful(txLockFunds.hash, 'shardeum', sEthArbitrumTokenContractAddressShardeum, parsedAmount, 'arbETH', decimals);
+                    depositSuccessful(txLockFunds.hash, 'shardeum', sEthArbitrumTokenContractAddressShardeum, parsedAmount, 'sARBETH', decimals);
                 } else if (tokenDropdown.value == 'arb') {
                     try {
                         const bridgeErc20ContractAddressArbitrum = process.env.BRIDGE_ERC20_CONTRACT_ADDRESS_ARBITRUM;
@@ -989,7 +1003,7 @@ bridgeButton.addEventListener('click', async () => {
                         await txApprove.wait();
                         const txDeposit = await bridgeErc20ContractArbitrum.deposit(arbTokenContractAddressArbitrum, parsedAmount);
                         await txDeposit.wait();
-                        depositSuccessful(txDeposit.hash, 'shardeum', sArbTokenContractAddressShardeum, parsedAmount, 'ARB', decimals);
+                        depositSuccessful(txDeposit.hash, 'shardeum', sArbTokenContractAddressShardeum, parsedAmount, 'sARB', decimals);
                     } catch (error) {
                         window.alert('Error: ' + error.message);
                     }
@@ -1007,7 +1021,7 @@ bridgeButton.addEventListener('click', async () => {
                     
                     const txLockFunds = await bridgeNativeContractAvax.lockFunds({value: parsedAmount});
                     await txLockFunds.wait();
-                    depositSuccessful(txLockFunds.hash, 'shardeum', sAvaxTokenContractAddressShardeum, parsedAmount, 'AVAX', decimals);
+                    depositSuccessful(txLockFunds.hash, 'shardeum', sAvaxTokenContractAddressShardeum, parsedAmount, 'sAVAX', decimals);
                 } else if (tokenDropdown.value == 'wavax') {
                     try {
                         const bridgeErc20ContractAddressAvax = process.env.BRIDGE_ERC20_CONTRACT_ADDRESS_AVAX;
@@ -1021,7 +1035,7 @@ bridgeButton.addEventListener('click', async () => {
                         await txApprove.wait();
                         const txDeposit = await bridgeErc20ContractAvax.deposit(wavaxTokenContractAddressAvax, parsedAmount);
                         await txDeposit.wait();
-                        depositSuccessful(txDeposit.hash, 'shardeum', sWavaxTokenContractAddressShardeum, parsedAmount, 'WAVAX', decimals);
+                        depositSuccessful(txDeposit.hash, 'shardeum', sWavaxTokenContractAddressShardeum, parsedAmount, 'sWAVAX', decimals);
                     } catch (error) {
                         window.alert('Error: ' + error.message);
                     }
@@ -1039,7 +1053,7 @@ bridgeButton.addEventListener('click', async () => {
                     
                     const txLockFunds = await bridgeNativeContractBnb.lockFunds({value: parsedAmount});
                     await txLockFunds.wait();
-                    depositSuccessful(txLockFunds.hash, 'shardeum', sBnbTokenContractAddressShardeum, parsedAmount, 'BNB', decimals);
+                    depositSuccessful(txLockFunds.hash, 'shardeum', sBnbTokenContractAddressShardeum, parsedAmount, 'sBNB', decimals);
                 } else if (tokenDropdown.value != 'bnb') {
                     try {
                         const bridgeErc20ContractAddressBnb = process.env.BRIDGE_ERC20_CONTRACT_ADDRESS_BNB;
@@ -1054,7 +1068,7 @@ bridgeButton.addEventListener('click', async () => {
                             await txApprove.wait();
                             const txDeposit = await bridgeErc20ContractBnb.deposit(busdTokenContractAddressBnb, parsedAmount);
                             await txDeposit.wait();
-                            depositSuccessful(txDeposit.hash, 'shardeum', sBusdTokenContractAddressShardeum, parsedAmount, 'BUSD', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sBusdTokenContractAddressShardeum, parsedAmount, 'sBUSD', decimals);
                         }
                         if (tokenDropdown.value == 'wbnb') {
                             const wbnbTokenContractAddressBnb = process.env.WBNB_TOKEN_CONTRACT_ADDRESS_BNB;
@@ -1066,7 +1080,7 @@ bridgeButton.addEventListener('click', async () => {
                             await txApprove.wait();
                             const txDeposit = await bridgeErc20ContractBnb.deposit(wbnbTokenContractAddressBnb, parsedAmount);
                             await txDeposit.wait();
-                            depositSuccessful(txDeposit.hash, 'shardeum', sWbnbTokenContractAddressShardeum, parsedAmount, 'WBNB', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sWbnbTokenContractAddressShardeum, parsedAmount, 'sWBNB', decimals);
                         }
                     } catch (error) {
                         window.alert('Error: ' + error.message);
@@ -1085,7 +1099,7 @@ bridgeButton.addEventListener('click', async () => {
                     
                     const txLockFunds = await bridgeNativeContractEthereum.lockFunds({value: parsedAmount});
                     await txLockFunds.wait();
-                    depositSuccessful(txLockFunds.hash, 'shardeum', sEthEthereumTokenContractAddressShardeum, parsedAmount, 'ETH', decimals);
+                    depositSuccessful(txLockFunds.hash, 'shardeum', sEthEthereumTokenContractAddressShardeum, parsedAmount, 'sETH', decimals);
                 } else if (tokenDropdown.value != 'eth') {
                     try {
                         const bridgeErc20ContractAddressEthereum = process.env.BRIDGE_ERC20_CONTRACT_ADDRESS_ETHEREUM;
@@ -1101,7 +1115,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(oneInchTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sOneInchTokenContractAddressShardeum, parsedAmount, '1INCH', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sOneInchTokenContractAddressShardeum, parsedAmount, 's1INCH', decimals);
                         }
                         if (tokenDropdown.value == 'aave') {
                             const aaveTokenContractAddressEthereum = process.env.AAVE_TOKEN_CONTRACT_ADDRESS_ETHEREUM;
@@ -1114,7 +1128,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(aaveTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sAaveTokenContractAddressShardeum, parsedAmount, 'AAVE', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sAaveTokenContractAddressShardeum, parsedAmount, 'sAAVE', decimals);
                         }
                         if (tokenDropdown.value == 'dai') {
                             const daiTokenContractAddressEthereum = process.env.DAI_TOKEN_CONTRACT_ADDRESS_ETHEREUM;
@@ -1127,7 +1141,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(daiTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sDaiTokenContractAddressShardeum, parsedAmount, 'DAI', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sDaiTokenContractAddressShardeum, parsedAmount, 'sDAI', decimals);
                         }
                         if (tokenDropdown.value == 'eurc') {
                             decimals = 6;
@@ -1141,7 +1155,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(eurcTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sEurcTokenContractAddressShardeum, parsedAmount, 'EURC', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sEurcTokenContractAddressShardeum, parsedAmount, 'sEURC', decimals);
                         }
                         if (tokenDropdown.value == 'eurt') {
                             const eurtTokenContractAddressEthereum = process.env.EURT_TOKEN_CONTRACT_ADDRESS_ETHEREUM;
@@ -1154,7 +1168,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(eurtTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sEurtTokenContractAddressShardeum, parsedAmount, 'EURT', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sEurtTokenContractAddressShardeum, parsedAmount, 'sEURT', decimals);
                         }
                         if (tokenDropdown.value == 'lido') {
                             decimals = 18;
@@ -1168,7 +1182,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(lidoTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sLidoTokenContractAddressShardeum, parsedAmount, 'LDO', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sLidoTokenContractAddressShardeum, parsedAmount, 'sLDO', decimals);
                         }
                         if (tokenDropdown.value == 'link') {
                             const linkTokenContractAddressEthereum = process.env.LINK_TOKEN_CONTRACT_ADDRESS_ETHEREUM;
@@ -1181,7 +1195,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(linkTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sLinkTokenContractAddressShardeum, parsedAmount, 'LINK', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sLinkTokenContractAddressShardeum, parsedAmount, 'sLINK', decimals);
                         }
                         if (tokenDropdown.value == 'pancake') {
                             const pancakeTokenContractAddressEthereum = process.env.PANCAKE_TOKEN_CONTRACT_ADDRESS_ETHEREUM;
@@ -1194,7 +1208,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(pancakeTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sPancakeTokenContractAddressShardeum, parsedAmount, 'CAKE', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sPancakeTokenContractAddressShardeum, parsedAmount, 'sCAKE', decimals);
                         }
                         if (tokenDropdown.value == 'uni') {
                             const uniTokenContractAddressEthereum = process.env.UNI_TOKEN_CONTRACT_ADDRESS_ETHEREUM;
@@ -1207,7 +1221,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(uniTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sUniTokenContractAddressShardeum, parsedAmount, 'UNI', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sUniTokenContractAddressShardeum, parsedAmount, 'sUNI', decimals);
                         }
                         if (tokenDropdown.value == 'usdc') {
                             decimals = 6;
@@ -1221,7 +1235,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(usdcTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sUsdcTokenContractAddressShardeum, parsedAmount, 'USDC', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sUsdcTokenContractAddressShardeum, parsedAmount, 'sUSDC', decimals);
                         }
                         if (tokenDropdown.value == 'usdt') {
                             const usdtTokenContractAddressEthereum = process.env.USDT_TOKEN_CONTRACT_ADDRESS_ETHEREUM;
@@ -1234,7 +1248,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(usdtTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sUsdtTokenContractAddressShardeum, parsedAmount, 'USDT', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sUsdtTokenContractAddressShardeum, parsedAmount, 'sUSDT', decimals);
                         }
                         if (tokenDropdown.value == 'weth') {
                             decimals = 18;
@@ -1248,7 +1262,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(wethTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sWethTokenContractAddressShardeum, parsedAmount, 'WETH', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sWethTokenContractAddressShardeum, parsedAmount, 'sWETH', decimals);
                         }
                         if (tokenDropdown.value == 'xaut') {
                             decimals = 6;
@@ -1262,7 +1276,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractEthereum.deposit(xautTokenContractAddressEthereum, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sXautTokenContractAddressShardeum, parsedAmount, 'XAUT', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sXautTokenContractAddressShardeum, parsedAmount, 'sXAUT', decimals);
                         }
                     } catch (error) {
                         window.alert('Error: ' + error.message);
@@ -1282,7 +1296,7 @@ bridgeButton.addEventListener('click', async () => {
                     
                     const txLockFunds = await bridgeNativeContractOptimism.lockFunds({value: parsedAmount});
                     await txLockFunds.wait();
-                    depositSuccessful(txLockFunds.hash, 'shardeum', sEthOptimismTokenContractAddressShardeum, parsedAmount, 'opETH', decimals);
+                    depositSuccessful(txLockFunds.hash, 'shardeum', sEthOptimismTokenContractAddressShardeum, parsedAmount, 'sOPETH', decimals);
                 } else if (tokenDropdown.value == 'op') {
                     try {
                         const bridgeErc20ContractAddressOptimism = process.env.BRIDGE_ERC20_CONTRACT_ADDRESS_OPTIMISM;
@@ -1296,7 +1310,7 @@ bridgeButton.addEventListener('click', async () => {
                         await txApprove.wait();
                         const txDeposit = await bridgeErc20ContractOptimism.deposit(opTokenContractAddressOptimism, parsedAmount);
                         await txDeposit.wait();
-                        depositSuccessful(txDeposit.hash, 'shardeum', sOpTokenContractAddressShardeum, parsedAmount, 'OP', decimals);
+                        depositSuccessful(txDeposit.hash, 'shardeum', sOpTokenContractAddressShardeum, parsedAmount, 'sOP', decimals);
                     } catch (error) {
                         window.alert('Error: ' + error.message);
                     }
@@ -1314,7 +1328,7 @@ bridgeButton.addEventListener('click', async () => {
                     
                     const txLockFunds = await bridgeNativeContractPolygon.lockFunds({value: parsedAmount});
                     await txLockFunds.wait();
-                    depositSuccessful(txLockFunds.hash, 'shardeum', sMaticTokenContractAddressShardeum, parsedAmount, 'MATIC', decimals);
+                    depositSuccessful(txLockFunds.hash, 'shardeum', sMaticTokenContractAddressShardeum, parsedAmount, 'sMatic', decimals);
                 } else if (tokenDropdown.value != 'matic') {
                     try {
                         const bridgeErc20ContractAddressPolygon = process.env.BRIDGE_ERC20_CONTRACT_ADDRESS_POLYGON;
@@ -1331,7 +1345,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractPolygon.deposit(usdcPolygonTokenContractAddressPolygon, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sUsdcPolygonTokenContractAddressShardeum, parsedAmount, 'pUSDC', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sUsdcPolygonTokenContractAddressShardeum, parsedAmount, 'sPUSDC', decimals);
                         }
                         if (tokenDropdown.value == 'usdtpolygon') {
                             const usdtPolygonTokenContractAddressPolygon = process.env.USDT_POLYGON_TOKEN_CONTRACT_ADDRESS_POLYGON;
@@ -1344,7 +1358,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractPolygon.deposit(usdtPolygonTokenContractAddressPolygon, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sUsdtPolygonTokenContractAddressShardeum, parsedAmount, 'pUSDT', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sUsdtPolygonTokenContractAddressShardeum, parsedAmount, 'sPUSDT', decimals);
                         }
                         if (tokenDropdown.value == 'wmatic') {
                             decimals = 18;
@@ -1358,7 +1372,7 @@ bridgeButton.addEventListener('click', async () => {
                             const txDeposit = await bridgeErc20ContractPolygon.deposit(wmaticTokenContractAddressPolygon, parsedAmount);
                             await txDeposit.wait();
 
-                            depositSuccessful(txDeposit.hash, 'shardeum', sWmaticTokenContractAddressShardeum, parsedAmount, 'WMATIC', decimals);
+                            depositSuccessful(txDeposit.hash, 'shardeum', sWmaticTokenContractAddressShardeum, parsedAmount, 'sWMATIC', decimals);
                         }
                     } catch (error) {
                         window.alert('Error: ' + error.message);
