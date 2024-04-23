@@ -193,5 +193,5 @@ shard ~ npm run build
 ```
 
 Finally you will need to run the project on a live server. This can be easily done
-with `VSCode` with the `LiveServer` plugin. Or if you preferr you can serve it
+with `VSCode` with the `LiveServer` plugin. Or if you prefer you can serve it
 using `Node Express`.
