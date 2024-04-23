@@ -9,6 +9,8 @@ out/
 
 # Directories
 node_modules/
+broadcast/
+.vscode/
 
 # Docs
 docs/
